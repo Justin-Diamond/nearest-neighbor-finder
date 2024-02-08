@@ -1,0 +1,36 @@
+digraph {
+	"Alex Stone"
+	"Max Carter"
+	"Emma Clarke"
+	"Olivia Brooks"
+	"James Anderson"
+	"Chris Johnson"
+	"Ava Taylor"
+	"Mia Harris"
+	"Noah Wilson"
+	"Liam Roberts"
+	"Isaac Martinez"
+	"Leo Thompson"
+	"Gabriel Walker"
+	"Sophia Lee"
+	"Lucas King"
+	"Emily Young"
+	"Charlotte White"
+	"Alex Stone" -> "Noah Wilson" [label=6.2]
+	"Max Carter" -> "Noah Wilson" [label=5.4]
+	"Emma Clarke" -> "Sophia Lee" [label=6.16]
+	"Olivia Brooks" -> "Leo Thompson" [label=6.17]
+	"James Anderson" -> "Noah Wilson" [label=6.98]
+	"Chris Johnson" -> "Noah Wilson" [label=5.26]
+	"Ava Taylor" -> "Sophia Lee" [label=5.87]
+	"Mia Harris" -> "Sophia Lee" [label=6.01]
+	"Noah Wilson" -> "Chris Johnson" [label=5.26]
+	"Liam Roberts" -> "Gabriel Walker" [label=7.28]
+	"Isaac Martinez" -> "Sophia Lee" [label=6.98]
+	"Leo Thompson" -> "Noah Wilson" [label=5.63]
+	"Gabriel Walker" -> "Lucas King" [label=5.37]
+	"Sophia Lee" -> "Noah Wilson" [label=5.3]
+	"Lucas King" -> "Gabriel Walker" [label=5.37]
+	"Emily Young" -> "Lucas King" [label=6.12]
+	"Charlotte White" -> "Sophia Lee" [label=6.11]
+}
