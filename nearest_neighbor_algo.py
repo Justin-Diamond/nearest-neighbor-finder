@@ -88,11 +88,11 @@ for i, name in enumerate(user_names):
             y=[selected_data[i, 1]],
             z=[selected_data[i, 2]],
             mode="markers+text",
-            marker=dict(size=10),  # Increase marker size
+            marker=dict(size=8),  # Increase marker size
             name=name,
             text=name,
             textposition="middle right",
-            textfont=dict(size=12),  # Increase text size
+            textfont=dict(size=6),  # Increase text size
         )
     )
 
@@ -143,7 +143,7 @@ print("Nearest Neighbors for Each User (using all dimensions):")
 for i, (neighbor, distance) in enumerate(
     zip(nearest_neighbors_all, nearest_distances_all)
 ):
-    print(f"{user_names[i]} -> {user_names[neighbor]} (distance: {distance:.2f})")
+    print(f"{user_names[i]} -> {user_names[neighbor]} (distance: {distance:.1f})")
 
 # Create a distance matrix for the heatmap using Manhattan distance
 dist_matrix = squareform(pdist(scaled_data.values, metric="cityblock"))
@@ -151,11 +151,14 @@ dist_matrix = squareform(pdist(scaled_data.values, metric="cityblock"))
 # Create a DataFrame for the heatmap
 dist_df = pd.DataFrame(dist_matrix, index=user_names, columns=user_names)
 
+# Create a mask to ignore zero values
+mask = dist_df == 0
+
 # Create a heatmap
 plt.figure(figsize=(10, 8))
 sns.heatmap(
-    dist_df, cmap="coolwarm_r", annot=True, fmt=".2f"
-)  # Use the "coolwarm" colormap
+    dist_df, cmap="coolwarm_r", annot=True, fmt=".1f", mask=mask, cbar_kws={'ticks': [dist_df.min().min(), dist_df.max().max()]}
+)  # Use the "coolwarm" colormap and mask zero values
 plt.title("Heatmap of Distances Between Users")
 plt.show()
 
@@ -174,6 +177,6 @@ plt.title("2D Scatter Plot with Linear Regression")
 # Calculate R^2 for the linear regression
 model = LinearRegression().fit(selected_data[:, 0].reshape(-1, 1), selected_data[:, 1])
 r2 = model.score(selected_data[:, 0].reshape(-1, 1), selected_data[:, 1])
-plt.text(0.05, 0.95, f"R^2 = {r2:.2f}", transform=plt.gca().transAxes)
+plt.text(0.05, 0.95, f"R^2 = {r2:.1f}", transform=plt.gca().transAxes)
 
 plt.show()
